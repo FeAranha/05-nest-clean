@@ -1,7 +1,6 @@
 import { Slug } from '@/domain/forum/enterprise/entities/value-objects/slug'
 import { AppModule } from '@/infra/app.module'
 import { DatabaseModule } from '@/infra/database/database.module'
-import { PrismaService } from '@/infra/database/prisma/prisma.service'
 import { INestApplication } from '@nestjs/common'
 import { JwtService } from '@nestjs/jwt'
 import { Test } from '@nestjs/testing'
@@ -11,7 +10,6 @@ import { StudentFactory } from 'test/factories/make-student'
 
 describe('Get question by slug (E2E)', () => {
   let app: INestApplication
-  let prisma: PrismaService
   let studentFactory: StudentFactory
   let questionFactory: QuestionFactory
   let jwt: JwtService
@@ -24,7 +22,6 @@ describe('Get question by slug (E2E)', () => {
 
     app = moduleRef.createNestApplication()
 
-    prisma = moduleRef.get(PrismaService)
     studentFactory = moduleRef.get(StudentFactory)
     questionFactory = moduleRef.get(QuestionFactory)
     jwt = moduleRef.get(JwtService)
@@ -43,14 +40,14 @@ describe('Get question by slug (E2E)', () => {
       slug: Slug.create('question-01'),
     })
 
-  const response = await request(app.getHttpServer())
-    .get('/questions/question-01')
-    .set('Authorization', `Bearer ${accessToken}`)
-    .send()
+    const response = await request(app.getHttpServer())
+      .get('/questions/question-01')
+      .set('Authorization', `Bearer ${accessToken}`)
+      .send()
 
-  expect(response.statusCode).toBe(200)
-  expect(response.body).toEqual({
-    question: expect.objectContaining({ title: 'Question 01' }),
+    expect(response.statusCode).toBe(200)
+    expect(response.body).toEqual({
+      question: expect.objectContaining({ title: 'Question 01' }),
+    })
   })
-})
 })
