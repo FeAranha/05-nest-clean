@@ -29,6 +29,13 @@ export class InMemoryAnswersRepository implements AnswersRepository {
     return answers
   }
 
+  async findManyByAnswerIdWithAuthor(
+    answerId: string,
+    { page }: PaginationParams,
+    ) {
+ //algo
+    }
+
   async create(answer: Answer) {
     this.items.push(answer)
 
