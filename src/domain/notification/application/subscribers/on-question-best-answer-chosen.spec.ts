@@ -34,7 +34,7 @@ describe('On Question Best Answer Chosen', () => {
   beforeEach(() => {
     inMemoryQuestionAttachmentsRepository =
       new InMemoryQuestionAttachmentsRepository()
-      inMemoryStudentsRepository = new InMemoryStudentsRepository()
+    inMemoryStudentsRepository = new InMemoryStudentsRepository()
     inMemoryAttachmentsRepository = new InMemoryAttachmentsRepository()
     inMemoryQuestionsRepository = new InMemoryQuestionsRepository(
       inMemoryQuestionAttachmentsRepository,

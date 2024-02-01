@@ -20,7 +20,7 @@ export class PrismaAnswerCommentsRepository
       },
     })
 
-    if(!answerComment) {
+    if (!answerComment) {
       return null
     }
 

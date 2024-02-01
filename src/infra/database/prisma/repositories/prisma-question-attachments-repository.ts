@@ -6,16 +6,19 @@ import { PrismaQuestionAttachmentMapper } from '../mappers/prisma-question-attac
 
 @Injectable()
 export class PrismaQuestionAttachmentsRepository
-  implements QuestionAttachmentsRepository {
+  implements QuestionAttachmentsRepository
+{
   constructor(private prisma: PrismaService) {}
 
-  async findManyByQuestionId(questionId: string): Promise<QuestionAttachment[]> {
+  async findManyByQuestionId(
+    questionId: string,
+  ): Promise<QuestionAttachment[]> {
     const questionAttachments = await this.prisma.attachment.findMany({
       where: {
         questionId,
       },
     })
-    
+
     return questionAttachments.map(PrismaQuestionAttachmentMapper.toDomain)
   }
 

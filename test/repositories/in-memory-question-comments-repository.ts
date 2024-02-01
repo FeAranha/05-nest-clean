@@ -5,10 +5,11 @@ import { InMemoryStudentsRepository } from './in-memory-students-repository'
 import { CommentWithAuthor } from '@/domain/forum/enterprise/entities/value-objects/comment-with-author'
 
 export class InMemoryQuestionCommentsRepository
-  implements QuestionCommentsRepository {
+  implements QuestionCommentsRepository
+{
   public items: QuestionComment[] = []
 
-  constructor(private studentsRepository: InMemoryStudentsRepository) { }
+  constructor(private studentsRepository: InMemoryStudentsRepository) {}
 
   async findById(id: string) {
     const questionComment = this.items.find((item) => item.id.toString() === id)

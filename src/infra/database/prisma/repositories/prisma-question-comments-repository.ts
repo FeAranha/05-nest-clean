@@ -10,9 +10,9 @@ import { PrismaCommentWithAuthorMapper } from '../mappers/prisma-comment-with-au
 @Injectable()
 export class PrismaQuestionCommentsRepository
   implements QuestionCommentsRepository
-   {
+{
   constructor(private prisma: PrismaService) {}
-  
+
   async findById(id: string): Promise<QuestionComment | null> {
     const questionComment = await this.prisma.comment.findUnique({
       where: {
@@ -20,7 +20,7 @@ export class PrismaQuestionCommentsRepository
       },
     })
 
-    if(!questionComment) {
+    if (!questionComment) {
       return null
     }
 
@@ -39,7 +39,7 @@ export class PrismaQuestionCommentsRepository
         createdAt: 'desc',
       },
       take: 20,
-      skip: (page -1) * 20,
+      skip: (page - 1) * 20,
     })
 
     return questionComments.map(PrismaQuestionCommentMapper.toDomain)
@@ -72,7 +72,6 @@ export class PrismaQuestionCommentsRepository
     await this.prisma.comment.create({
       data,
     })
-
   }
 
   async delete(questionComment: QuestionComment): Promise<void> {

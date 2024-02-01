@@ -112,6 +112,5 @@ describe('Edit answer (E2E)', () => {
         }),
       ]),
     )
-
   })
 })

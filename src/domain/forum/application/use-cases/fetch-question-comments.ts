@@ -17,7 +17,7 @@ type FetchQuestionCommentsUseCaseResponse = Either<
 
 @Injectable()
 export class FetchQuestionCommentsUseCase {
-  constructor(private questionCommentsRepository: QuestionCommentsRepository) { }
+  constructor(private questionCommentsRepository: QuestionCommentsRepository) {}
 
   async execute({
     questionId,
@@ -31,7 +31,7 @@ export class FetchQuestionCommentsUseCase {
         },
       )
     return right({
-      comments
+      comments,
     })
   }
 }

@@ -11,7 +11,7 @@ export class PrismaAnswersRepository implements AnswersRepository {
   constructor(
     private prisma: PrismaService,
     private answerAttachmentsRepository: AnswerAttachmentsRepository,
-    ) {}
+  ) {}
 
   async findById(id: string): Promise<Answer | null> {
     const answer = await this.prisma.answer.findUnique({
@@ -36,7 +36,7 @@ export class PrismaAnswersRepository implements AnswersRepository {
         questionId,
       },
       orderBy: {
-        createdAt: 'desc'
+        createdAt: 'desc',
       },
       take: 20,
       skip: (page - 1) * 20,

@@ -1,7 +1,7 @@
-import { UniqueEntityID } from "@/core/entities/unique-entity-id"
-import { Slug } from "./slug"
-import { Attachment } from "../attachment"
-import { ValueObject } from "@/core/entities/value-object"
+import { UniqueEntityID } from '@/core/entities/unique-entity-id'
+import { Slug } from './slug'
+import { Attachment } from '../attachment'
+import { ValueObject } from '@/core/entities/value-object'
 
 export interface QuestionDetailsProps {
   questionId: UniqueEntityID
@@ -16,7 +16,7 @@ export interface QuestionDetailsProps {
   updatedAt?: Date | null
 }
 
-export class QuestionDetails extends ValueObject<QuestionDetailsProps>{
+export class QuestionDetails extends ValueObject<QuestionDetailsProps> {
   get questionId() {
     return this.props.questionId
   }
